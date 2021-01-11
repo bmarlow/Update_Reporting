@@ -1,7 +1,7 @@
 Update_Reporting
 =========
 
-The purpose of this role is to provide a framework for both updating systems and providing an audit (report) on the update.  Namely to show what versions the packages originally were and what they are after the update.
+The purpose of this role is to provide a framework for both updating systems and providing an audit (report) on the update.  Namely to show what versions the packages originally were and what they are after the update.  The current report output is an html page that gets stored in /tmp/update_report.html, however the report is also stored as variable in the playbook and can be sent to some manner of CMDB (or have the format changed by updating the Jinja2 template).
 
 Requirements
 ------------
