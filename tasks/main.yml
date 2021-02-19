@@ -16,6 +16,11 @@
   local_action: shell date +'%Y-%m-%dT%H:%M:%SZ'
   register: e_datetime
 
+# print update report
+- name: "debug print"
+  debug:
+    var: update_details.results
+
 # create a list of the pre-existing packages and versions that will be updated
 - name: "Build list of old package versions"
   set_fact:
