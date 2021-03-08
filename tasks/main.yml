@@ -16,18 +16,6 @@
   shell: "date +'%Y-%m-%dT%H:%M:%SZ'"
   register: e_datetime
 
-# print update_results
-- name: "Print update output"
-  debug:
-    var: update_details.results
-
-# create list of updates
-- name: "Create update list"
-  set_fact:
-    package_updates: "{{ package_updates | default([]) + item }}"
-  loop: "{{ update_details.changes.updated }}"
-  when: update_details.changes.updated | default ([])
-
 # get the duration
 - name: "Get duration of update process"
   set_fact:
@@ -38,9 +26,14 @@
   set_fact:
     update_report: "{{ lookup('template', 'update_report.j2') }}"
 
+# print report to console
+- name: "Print debug information"
+  debug:
+    var: update_report
+
 # print our update report
 - name: "Print update report to file"
   template:
     src: "templates/update_report.j2"
-    dest: /tmp/update_report.html
+    dest: /tmp/update_report.txt
     mode: 0755

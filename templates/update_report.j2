@@ -2,11 +2,9 @@
 Update Process Started: {{ s_datetime.stdout.split('T')[0] }} {{ s_datetime.stdout.split('T')[1][:-1] }}
 Update Process Finished: {{ e_datetime.stdout.split('T')[0] }} {{ e_datetime.stdout.split('T')[1][:-1] }}
 Duration: {{ duration }}
-{% if package_updates is defined %}
-{% for package in package_updates %}
-package
+{% if update_details is defined %}
+{% for package in update_details.results %}
+{{ package }}
 {% endfor %}
 
-{% else %}
-
-No updates available at this time.
+{% endif %}
